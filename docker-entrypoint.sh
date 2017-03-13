@@ -7,4 +7,4 @@ varnishd \
 
 sleep 5
 
-varnishstatbeat -c varnishstatbeat.yml -e -d "*"
+./varnishstatbeat -c varnishstatbeat.yml -e -d "*"
