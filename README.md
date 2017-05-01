@@ -1,6 +1,6 @@
 # Varnishstatbeat
 
-Varnishstatbeat is an elastic [beat](https://www.elastic.co/products/beats)
+Varnishstatbeat is an Elastic [beat](https://www.elastic.co/products/beats)
 that collects Stats data from a Varnish Shared Memory file and ships
 it to Elasticsearch.
 
@@ -49,6 +49,6 @@ docker-compose up --build
 This command will create the following containers:
 
 - Kibana (localhost:5601)
-- Varnishstatbeat (localhost:8080)
+- Varnishstatbeat / Varnish (localhost:8080)
 - Nginx (localhost:80)
 - Elasticsearch (localhost:9200)
