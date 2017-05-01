@@ -1,20 +1,17 @@
-# varnishstatbeat
+# Varnishstatbeat
 
-varnishstatbeat collects stat data from a Varnish Shared Memory file and ships
+Varnishstatbeat is an elastic [beat](https://www.elastic.co/products/beats)
+that collects Stats data from a Varnish Shared Memory file and ships
 it to Elasticsearch.
 
-varnishstatbeat uses [vago](https://github.com/phenomenes/vago).
-
-## Status
-
-varnishstatbeat is currently in beta but it's functional. If you encounter
-performance issues or any bugs please create an issue or send a pull request.
+Varnishstatbeat uses [vago](https://github.com/phenomenes/vago).
 
 ### Requirements
 
 * [Go](https://golang.org/dl/) >= 1.7
 * pkg-config
 * [varnish-dev](http://www.varnish-cache.org/releases/) >= 4.1
+* [Elasticsearch](https://github.com/elastic/elasticsearch) >= 5.0
 
 You will also need to set `PKG_CONFIG_PATH` to the directory where
 `varnishapi.pc` is located before running `go get`. For example:
@@ -33,7 +30,7 @@ go build .
 
 ### Run
 
-Install and run [elasticsearch](https://github.com/elastic/elasticsearch).
+Make sure Elasticsearch is running.
 
 Run `varnishstatbeat` with debugging output enabled:
 
@@ -41,5 +38,18 @@ Run `varnishstatbeat` with debugging output enabled:
 ./varnishstatbeat -c varnishstatbeat.yml -e -d "*"
 ```
 
-Additionally you can install [kibana](https://github.com/elastic/kibana) to
-visualise the data.
+Additionally you can install [Kibana](https://github.com/elastic/kibana) to
+visualize the data.
+
+### Run on Docker
+
+```
+docker-compose up --build
+```
+
+This command will create the following containers:
+
+- Kibana (localhost:5601)
+- Varnishstatbeat (localhost:8080)
+- Nginx (localhost:80)
+- Elasticsearch (localhost:9200)
