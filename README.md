@@ -11,7 +11,6 @@ Varnishstatbeat uses [vago](https://github.com/phenomenes/vago).
 * [Go](https://golang.org/dl/) >= 1.7
 * pkg-config
 * [varnish-dev](http://www.varnish-cache.org/releases/) >= 4.1
-* [Elasticsearch](https://github.com/elastic/elasticsearch) >= 5.0
 
 You will also need to set `PKG_CONFIG_PATH` to the directory where
 `varnishapi.pc` is located before running `go get`. For example:
@@ -30,7 +29,7 @@ go build .
 
 ### Run
 
-Make sure Elasticsearch is running.
+Install and run [Elasticsearch](https://github.com/elastic/elasticsearch).
 
 Run `varnishstatbeat` with debugging output enabled:
 
