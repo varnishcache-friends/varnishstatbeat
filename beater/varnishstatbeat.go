@@ -16,38 +16,43 @@ import (
 
 type Varnishstatbeat struct {
 	done    chan struct{}
-	config  config.Config
 	client  publisher.Client
 	varnish *vago.Varnish
+	config  *vago.Config
+	period  time.Duration
 }
 
 // New creates a new Beater
-func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
-	config := config.DefaultConfig
-	if err := cfg.Unpack(&config); err != nil {
+func New(b *beat.Beat, c *common.Config) (beat.Beater, error) {
+	cfg := config.DefaultConfig
+	if err := c.Unpack(&cfg); err != nil {
 		return nil, fmt.Errorf("Error reading config file: %v", err)
 	}
 
 	vb := &Varnishstatbeat{
-		done:   make(chan struct{}),
-		config: config,
+		done: make(chan struct{}),
+		config: &vago.Config{
+			Path:    cfg.Path,
+			Timeout: cfg.Timeout,
+		},
+		period: cfg.Period,
 	}
 
 	return vb, nil
 }
 
 func (vb *Varnishstatbeat) Run(b *beat.Beat) error {
-	logp.Info("varnishstatbeat is running! Hit CTRL-C to stop it.")
-
 	var err error
 
-	vb.varnish, err = vago.Open(vb.config.Path)
+	logp.Info("varnishstatbeat is running! Hit CTRL-C to stop it.")
+
+	vb.varnish, err = vago.Open(vb.config)
 	if err != nil {
 		return err
 	}
 
 	vb.client = b.Publisher.Connect()
-	ticker := time.NewTicker(vb.config.Period)
+	ticker := time.NewTicker(vb.period)
 	counter := 1
 	for {
 		select {
