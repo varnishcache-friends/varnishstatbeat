@@ -7,6 +7,7 @@ backend default {
 backend nginx {
     .host = "backend";
     .port = "80";
+    .probe = {}
 }
 
 sub vcl_recv {
