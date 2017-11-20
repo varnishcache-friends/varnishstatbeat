@@ -2,6 +2,7 @@ package beater
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 	"time"
 
@@ -69,7 +70,11 @@ func (vb *Varnishstatbeat) Run(b *beat.Beat) error {
 
 		for k, v := range vb.varnish.Stats() {
 			key := strings.Replace(k, ".", "_", -1)
-			event[key] = v
+			if strings.Contains(key, "happy") {
+				event[key] = strconv.FormatUint(v, 2)
+			} else {
+				event[key] = v
+			}
 		}
 
 		vb.client.PublishEvent(event)
