@@ -144,8 +144,8 @@
 [[projects]]
   name = "github.com/phenomenes/vago"
   packages = ["."]
-  revision = "06619c01df3321935c21f1c21bd9986b73feb28f"
-  version = "v1.0.1"
+  revision = "e54d49e02274647fd6eb142bae684ba92b418461"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/pierrec/lz4"
@@ -200,6 +200,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2cb2a6132fdff3013e8987d03a9d499c87f0c8386b8f054bfee6c1227dac8f3c"
+  inputs-digest = "c5017bd04a23f140c902ddc62354bb49ce784674142b1223c8d3d4b0ef23dbb4"
   solver-name = "gps-cdcl"
   solver-version = 1
