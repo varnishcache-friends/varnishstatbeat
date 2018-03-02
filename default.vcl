@@ -19,7 +19,7 @@ sub vcl_recv {
 }
 
 sub vcl_synth {
-	set resp.body = {"
+	synthetic({"
 <html>
 <head>
 <title>Varnish + Go == <3</title>
@@ -27,6 +27,7 @@ sub vcl_synth {
 <body>
 <h1>Varnish + Go == <span style="color:pink"><3</span></h1>
 <pre>
+<p>VERSION="4.1"</p>
 <p>HTTP_COOKIE="} + req.http.cookie + {"</p>
 <p>HTTP_HOST="} + req.http.host + {"</p>
 <p>HTTP_REFERER="} + req.http.referer + {"</p>
@@ -36,6 +37,6 @@ sub vcl_synth {
 </pre>
 </body>
 </html>
-"};
+"});
 	return (deliver);
 }
