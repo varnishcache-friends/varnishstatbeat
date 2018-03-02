@@ -6,11 +6,13 @@ it to Elasticsearch.
 
 Varnishstatbeat uses [vago](https://github.com/phenomenes/vago).
 
+For 4.1 refer to branch `varnish-4.1`
+
 ### Requirements
 
 * [Go](https://golang.org/dl/) >= 1.7
 * pkg-config
-* [varnish-dev](http://www.varnish-cache.org/releases/) >= 4.1
+* [varnish-dev](http://www.varnish-cache.org/releases/) >= 5.2.x
 
 You will also need to set `PKG_CONFIG_PATH` to the directory where
 `varnishapi.pc` is located before running `go get`. For example:
