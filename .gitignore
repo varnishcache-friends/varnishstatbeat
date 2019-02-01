@@ -1,8 +1,8 @@
+*.pyc
+.DS_Store
+.envrc
 /.idea
 /build
-
-.DS_Store
 /varnishstatbeat
 /varnishstatbeat.test
-*.pyc
 _vendor*
