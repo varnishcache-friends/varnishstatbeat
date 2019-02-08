@@ -81,8 +81,6 @@ func (vb *Varnishstatbeat) Run(b *beat.Beat) error {
 		logp.Info("Event sent")
 		counter++
 	}
-
-	return nil
 }
 
 func (vb *Varnishstatbeat) Stop() {

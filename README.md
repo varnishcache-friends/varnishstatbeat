@@ -10,9 +10,9 @@ For 4.1 refer to branch `varnish-4.1`
 
 ### Requirements
 
-* [Go](https://golang.org/dl/) >= 1.7
+* [Go](https://golang.org/dl/) >= 1.9
 * pkg-config
-* [varnish-dev](http://www.varnish-cache.org/releases/) >= 5.2.x
+* [varnish-dev](http://www.varnish-cache.org/releases/) >= 6.0
 
 You will also need to set `PKG_CONFIG_PATH` to the directory where
 `varnishapi.pc` is located before running `go get`. For example:
@@ -42,13 +42,13 @@ Run `varnishstatbeat` with debugging output enabled:
 Additionally you can install [Kibana](https://github.com/elastic/kibana) to
 visualize the data.
 
-### Run on Docker
+### Run in Docker
 
 ```
 docker-compose up --build
 ```
 
-The above command will create the following containers:
+The above command will start the following containers:
 
 - [Kibana](http://127.0.0.1:5601/status#?_g=())
 - Varnishlogbeat / [Varnish](http://127.0.0.1:8080/status)
