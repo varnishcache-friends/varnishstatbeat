@@ -30,29 +30,26 @@ func New(b *beat.Beat, c *common.Config) (beat.Beater, error) {
 		return nil, fmt.Errorf("Error reading config file: %v", err)
 	}
 
-	vb := &Varnishstatbeat{
+	return &Varnishstatbeat{
 		done: make(chan struct{}),
 		config: &vago.Config{
 			Path:    cfg.Path,
 			Timeout: cfg.Timeout,
 		},
 		period: cfg.Period,
-	}
-
-	return vb, nil
+		client: b.Publisher.Connect(),
+	}, nil
 }
 
 func (vb *Varnishstatbeat) Run(b *beat.Beat) error {
 	var err error
-
 	logp.Info("varnishstatbeat is running! Hit CTRL-C to stop it.")
-
 	vb.varnish, err = vago.Open(vb.config)
 	if err != nil {
 		return err
 	}
+	defer vb.varnish.Close()
 
-	vb.client = b.Publisher.Connect()
 	ticker := time.NewTicker(vb.period)
 	counter := 1
 	for {
@@ -84,8 +81,6 @@ func (vb *Varnishstatbeat) Run(b *beat.Beat) error {
 }
 
 func (vb *Varnishstatbeat) Stop() {
-	vb.varnish.Stop()
-	vb.varnish.Close()
 	vb.client.Close()
 	close(vb.done)
 }

@@ -10,7 +10,7 @@ varnishstatbeat:
   period: 10s
 
   # VSM connection timeout in milliseconds
-  timeout: 5000
+  # timeout: 5000ms
 
 #================================ General =====================================
 
