@@ -6,11 +6,12 @@ it to Elasticsearch.
 
 Varnishstatbeat uses [vago](https://github.com/phenomenes/vago).
 
-For 4.1 refer to branch `varnish-4.1`
+If you are looking to run older version of Varnish check for the corresponding
+branch.
 
 ### Requirements
 
-* [Go](https://golang.org/dl/) >= 1.9
+* [Go](https://golang.org/dl/) >= 1.14
 * pkg-config
 * [varnish-dev](http://www.varnish-cache.org/releases/) >= 6.0
 
