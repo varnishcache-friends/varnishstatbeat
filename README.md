@@ -26,8 +26,6 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 
 ```
 go get github.com/phenomenes/varnishstatbeat
-cd $GOPATH/src/github.com/phenomenes/varnishstatbeat
-go build .
 ```
 
 ### Run
@@ -37,7 +35,8 @@ Install and run [Elasticsearch](https://github.com/elastic/elasticsearch).
 Run `varnishstatbeat` with debugging output enabled:
 
 ```
-./varnishstatbeat -c varnishstatbeat.yml -e -d "*"
+cd $GOPATH/src/github.com/phenomenes/varnishstatbeat
+varnishstatbeat -c varnishstatbeat.yml -e -d "*"
 ```
 
 Additionally you can install [Kibana](https://github.com/elastic/kibana) to
